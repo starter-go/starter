@@ -1,0 +1,33 @@
+{
+    "configen": {
+        "version": "4",
+        "sources": [
+            {
+                "id": "starter",
+                "path": "common",
+                "r": true
+            },
+            {
+                "id": "example",
+                "path": "src/example/parts",
+                "r": true
+            }
+        ],
+        "destinations": [
+            {
+                "id": "starter",
+                "path": "gen/gen4starter",
+                "sources": [
+                    "starter"
+                ]
+            },
+            {
+                "id": "example",
+                "path": "gen/gen4example",
+                "sources": [
+                    "example"
+                ]
+            }
+        ]
+    }
+}
