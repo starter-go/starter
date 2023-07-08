@@ -12,6 +12,7 @@ type MainLogger struct {
 	Filters       []vlog.MessageFilterRegistry //starter:inject(".")
 	Level         string                       //starter:inject("${vlog.level}")
 	MainGroupName string                       //starter:inject("${vlog.main}")
+	Context       application.Context          //starter:inject("context")
 
 	lc *LoggerContext //  level vlog.Level
 }
@@ -34,7 +35,23 @@ func (inst *MainLogger) init() error {
 		return err
 	}
 	vlog.SetLoggerFactory(inst)
+	inst.flushStartupLogs()
 	return nil
+}
+
+func (inst *MainLogger) flushStartupLogs() {
+
+	const name = attrNameForStartupBuffer
+	atts := inst.Context.GetAttributes()
+	object := atts.GetAttribute(name)
+	atts.SetAttribute(name, nil)
+
+	buffer := object.(*myStartupBuffer)
+	src := buffer.logs
+	buffer.logs = nil
+	for _, msg := range src {
+		inst.lc.LogWithMessage(msg)
+	}
 }
 
 func (inst *MainLogger) initLoggerContext() error {

@@ -1,5 +1,6 @@
 package gen4starter
 import (
+    p0ef6f2938 "github.com/starter-go/application"
     p11352c8b4 "github.com/starter-go/starter/common/logs"
     p55f0853be "github.com/starter-go/vlog"
      "github.com/starter-go/application"
@@ -215,6 +216,7 @@ func (inst* p11352c8b40_logs_MainLogger) inject(injext application.InjectionExt,
     com.Filters = inst.getFilters(ie)
     com.Level = inst.getLevel(ie)
     com.MainGroupName = inst.getMainGroupName(ie)
+    com.Context = inst.getContext(ie)
 
 
     return nil
@@ -239,6 +241,11 @@ func (inst*p11352c8b40_logs_MainLogger) getLevel(ie application.InjectionExt)str
 
 func (inst*p11352c8b40_logs_MainLogger) getMainGroupName(ie application.InjectionExt)string{
     return ie.GetString("${vlog.main}")
+}
+
+
+func (inst*p11352c8b40_logs_MainLogger) getContext(ie application.InjectionExt)p0ef6f2938.Context{
+    return ie.GetContext()
 }
 
 

@@ -20,9 +20,11 @@ var theModuleResFS embed.FS
 // Module 导出模块 [github.com/starter-go/starter]
 func Module() application.Module {
 	mb := application.ModuleBuilder{}
-	mb.Name(theModuleName).Version(theModuleVersion).Revision(theModuleRevision)
+	mb.Name(theModuleName)
+	mb.Version(theModuleVersion)
+	mb.Revision(theModuleRevision)
 	mb.EmbedResources(theModuleResFS, theModuleResPath)
 	mb.Components(gen4starter.ExportComponents)
-	mb.Depend(nil)
+	// mb.Depend(nil)
 	return mb.Create()
 }

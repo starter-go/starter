@@ -1,7 +1,7 @@
 package gen4example
 import (
-    p744545790 "github.com/starter-go/starter/src/example/parts"
     p0ef6f2938 "github.com/starter-go/application"
+    p744545790 "github.com/starter-go/starter/src/example/parts"
      "github.com/starter-go/application"
 )
 
