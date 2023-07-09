@@ -10,6 +10,7 @@ import (
 // StartupBuffer 是 starter 启动初期的日志缓冲区
 type StartupBuffer interface {
 	Init(atts attributes.Table)
+	GetStartupTime() time.Time
 }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -17,12 +18,14 @@ type StartupBuffer interface {
 const attrNameForStartupBuffer = "github.com/starter-go/starter/common/logs/StartupBuffer#binding"
 
 type myStartupBuffer struct {
-	logs []*vlog.Message
+	logs        []*vlog.Message
+	startupTime time.Time
 }
 
 // Init ...
 func (inst *myStartupBuffer) Init(atts attributes.Table) {
 	const name = attrNameForStartupBuffer
+	inst.startupTime = time.Now()
 	atts.SetAttribute(name, inst)
 	vlog.SetLoggerFactory(inst.getLoggerFactory())
 }
@@ -36,6 +39,10 @@ func (inst *myStartupBuffer) push(msg *vlog.Message) {
 
 func (inst *myStartupBuffer) getLoggerFactory() vlog.LoggerFactory {
 	return &myStartupBufferLoggerFactory{buffer: inst}
+}
+
+func (inst *myStartupBuffer) GetStartupTime() time.Time {
+	return inst.startupTime
 }
 
 ////////////////////////////////////////////////////////////////////////////////
