@@ -1,10 +1,124 @@
 package gen4starter
 import (
     p0ef6f2938 "github.com/starter-go/application"
+    p10812a4aa "github.com/starter-go/starter/common/debug"
+    p753b8c772 "github.com/starter-go/starter/common/fs"
     p11352c8b4 "github.com/starter-go/starter/common/logs"
     p55f0853be "github.com/starter-go/vlog"
      "github.com/starter-go/application"
 )
+
+// type p10812a4aa.ContextInfoLog in package:github.com/starter-go/starter/common/debug
+//
+// id:com-10812a4aaeee52a6-debug-ContextInfoLog
+// class:
+// alias:
+// scope:singleton
+//
+type p10812a4aae_debug_ContextInfoLog struct {
+}
+
+func (inst* p10812a4aae_debug_ContextInfoLog) register(cr application.ComponentRegistry) error {
+	r := cr.NewRegistration()
+	r.ID = "com-10812a4aaeee52a6-debug-ContextInfoLog"
+	r.Classes = ""
+	r.Aliases = ""
+	r.Scope = "singleton"
+	r.NewFunc = inst.new
+	r.InjectFunc = inst.inject
+	return r.Commit()
+}
+
+func (inst* p10812a4aae_debug_ContextInfoLog) new() any {
+    return &p10812a4aa.ContextInfoLog{}
+}
+
+func (inst* p10812a4aae_debug_ContextInfoLog) inject(injext application.InjectionExt, instance any) error {
+	ie := injext
+	com := instance.(*p10812a4aa.ContextInfoLog)
+	nop(ie, com)
+
+	
+    com.Context = inst.getContext(ie)
+    com.Logger = inst.getLogger(ie)
+    com.EnableDebug = inst.getEnableDebug(ie)
+    com.LogArgs = inst.getLogArgs(ie)
+    com.LogEnv = inst.getLogEnv(ie)
+    com.LogProps = inst.getLogProps(ie)
+
+
+    return nil
+}
+
+
+func (inst*p10812a4aae_debug_ContextInfoLog) getContext(ie application.InjectionExt)p0ef6f2938.Context{
+    return ie.GetContext()
+}
+
+
+func (inst*p10812a4aae_debug_ContextInfoLog) getLogger(ie application.InjectionExt)p55f0853be.Logger{
+    return ie.GetComponent("#alias-55f0853bedbc094981acd8da904ae269-Logger").(p55f0853be.Logger)
+}
+
+
+func (inst*p10812a4aae_debug_ContextInfoLog) getEnableDebug(ie application.InjectionExt)bool{
+    return ie.GetBool("${debug.enabled}")
+}
+
+
+func (inst*p10812a4aae_debug_ContextInfoLog) getLogArgs(ie application.InjectionExt)bool{
+    return ie.GetBool("${debug.log-arguments}")
+}
+
+
+func (inst*p10812a4aae_debug_ContextInfoLog) getLogEnv(ie application.InjectionExt)bool{
+    return ie.GetBool("${debug.log-environment}")
+}
+
+
+func (inst*p10812a4aae_debug_ContextInfoLog) getLogProps(ie application.InjectionExt)bool{
+    return ie.GetBool("${debug.log-properties}")
+}
+
+
+
+// type p753b8c772.AFSProxy in package:github.com/starter-go/starter/common/fs
+//
+// id:com-753b8c77262f4ce1-fs-AFSProxy
+// class:
+// alias:alias-0d2a11d163e349503a64168a1cdf48a2-FS
+// scope:singleton
+//
+type p753b8c7726_fs_AFSProxy struct {
+}
+
+func (inst* p753b8c7726_fs_AFSProxy) register(cr application.ComponentRegistry) error {
+	r := cr.NewRegistration()
+	r.ID = "com-753b8c77262f4ce1-fs-AFSProxy"
+	r.Classes = ""
+	r.Aliases = "alias-0d2a11d163e349503a64168a1cdf48a2-FS"
+	r.Scope = "singleton"
+	r.NewFunc = inst.new
+	r.InjectFunc = inst.inject
+	return r.Commit()
+}
+
+func (inst* p753b8c7726_fs_AFSProxy) new() any {
+    return &p753b8c772.AFSProxy{}
+}
+
+func (inst* p753b8c7726_fs_AFSProxy) inject(injext application.InjectionExt, instance any) error {
+	ie := injext
+	com := instance.(*p753b8c772.AFSProxy)
+	nop(ie, com)
+
+	
+
+
+    return nil
+}
+
+
 
 // type p11352c8b4.ConsoleWriter in package:github.com/starter-go/starter/common/logs
 //
@@ -116,6 +230,44 @@ func (inst* p11352c8b40_logs_FileWriter) new() any {
 func (inst* p11352c8b40_logs_FileWriter) inject(injext application.InjectionExt, instance any) error {
 	ie := injext
 	com := instance.(*p11352c8b4.FileWriter)
+	nop(ie, com)
+
+	
+
+
+    return nil
+}
+
+
+
+// type p11352c8b4.LoggerProxy in package:github.com/starter-go/starter/common/logs
+//
+// id:com-11352c8b402dcccb-logs-LoggerProxy
+// class:
+// alias:alias-55f0853bedbc094981acd8da904ae269-Logger
+// scope:singleton
+//
+type p11352c8b40_logs_LoggerProxy struct {
+}
+
+func (inst* p11352c8b40_logs_LoggerProxy) register(cr application.ComponentRegistry) error {
+	r := cr.NewRegistration()
+	r.ID = "com-11352c8b402dcccb-logs-LoggerProxy"
+	r.Classes = ""
+	r.Aliases = "alias-55f0853bedbc094981acd8da904ae269-Logger"
+	r.Scope = "singleton"
+	r.NewFunc = inst.new
+	r.InjectFunc = inst.inject
+	return r.Commit()
+}
+
+func (inst* p11352c8b40_logs_LoggerProxy) new() any {
+    return &p11352c8b4.LoggerProxy{}
+}
+
+func (inst* p11352c8b40_logs_LoggerProxy) inject(injext application.InjectionExt, instance any) error {
+	ie := injext
+	com := instance.(*p11352c8b4.LoggerProxy)
 	nop(ie, com)
 
 	

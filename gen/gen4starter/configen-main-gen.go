@@ -30,11 +30,14 @@ func (inst *autoRegistrar) register(factory comFactory) error {
 func (inst*autoRegistrar) addAll() error {
 
     
+    inst.register(&p10812a4aae_debug_ContextInfoLog{})
     inst.register(&p11352c8b40_logs_ConsoleWriter{})
     inst.register(&p11352c8b40_logs_DefaultFormatter{})
     inst.register(&p11352c8b40_logs_FileWriter{})
+    inst.register(&p11352c8b40_logs_LoggerProxy{})
     inst.register(&p11352c8b40_logs_MainGroup{})
     inst.register(&p11352c8b40_logs_MainLogger{})
+    inst.register(&p753b8c7726_fs_AFSProxy{})
 
 
     return nil
