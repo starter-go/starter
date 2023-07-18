@@ -9,7 +9,9 @@ type LoggerProxy struct {
 	//starter:component
 	_as func(vlog.Logger) //starter:as("#")
 
-	logger vlog.Logger
+	Holder vlog.LoggerHolder //starter:inject("#starter-main-logger-holder")
+
+	// logger vlog.Logger
 }
 
 func (inst *LoggerProxy) _impl() vlog.Logger {
@@ -18,12 +20,14 @@ func (inst *LoggerProxy) _impl() vlog.Logger {
 
 // Logger ...
 func (inst *LoggerProxy) Logger() vlog.Logger {
-	l := inst.logger
-	if l == nil {
-		l = vlog.GetLogger()
-		inst.logger = l
-	}
-	return l
+
+	// l := inst.logger
+	// if l == nil {
+	// 	l = vlog.GetLogger()
+	// 	inst.logger = l
+	// }
+
+	return inst.Holder.Logger()
 }
 
 // Trace ...

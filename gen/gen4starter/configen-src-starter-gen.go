@@ -1,12 +1,63 @@
 package gen4starter
 import (
     p0ef6f2938 "github.com/starter-go/application"
+    pb8e5d8aed "github.com/starter-go/starter/common/banner"
     p10812a4aa "github.com/starter-go/starter/common/debug"
     p753b8c772 "github.com/starter-go/starter/common/fs"
     p11352c8b4 "github.com/starter-go/starter/common/logs"
     p55f0853be "github.com/starter-go/vlog"
      "github.com/starter-go/application"
 )
+
+// type pb8e5d8aed.Banner in package:github.com/starter-go/starter/common/banner
+//
+// id:com-b8e5d8aedf6fd10c-banner-Banner
+// class:
+// alias:
+// scope:singleton
+//
+type pb8e5d8aedf_banner_Banner struct {
+}
+
+func (inst* pb8e5d8aedf_banner_Banner) register(cr application.ComponentRegistry) error {
+	r := cr.NewRegistration()
+	r.ID = "com-b8e5d8aedf6fd10c-banner-Banner"
+	r.Classes = ""
+	r.Aliases = ""
+	r.Scope = "singleton"
+	r.NewFunc = inst.new
+	r.InjectFunc = inst.inject
+	return r.Commit()
+}
+
+func (inst* pb8e5d8aedf_banner_Banner) new() any {
+    return &pb8e5d8aed.Banner{}
+}
+
+func (inst* pb8e5d8aedf_banner_Banner) inject(injext application.InjectionExt, instance any) error {
+	ie := injext
+	com := instance.(*pb8e5d8aed.Banner)
+	nop(ie, com)
+
+	
+    com.Context = inst.getContext(ie)
+    com.Logger = inst.getLogger(ie)
+
+
+    return nil
+}
+
+
+func (inst*pb8e5d8aedf_banner_Banner) getContext(ie application.InjectionExt)p0ef6f2938.Context{
+    return ie.GetContext()
+}
+
+
+func (inst*pb8e5d8aedf_banner_Banner) getLogger(ie application.InjectionExt)p55f0853be.Logger{
+    return ie.GetComponent("#alias-55f0853bedbc094981acd8da904ae269-Logger").(p55f0853be.Logger)
+}
+
+
 
 // type p10812a4aa.ContextInfoLog in package:github.com/starter-go/starter/common/debug
 //
@@ -271,9 +322,15 @@ func (inst* p11352c8b40_logs_LoggerProxy) inject(injext application.InjectionExt
 	nop(ie, com)
 
 	
+    com.Holder = inst.getHolder(ie)
 
 
     return nil
+}
+
+
+func (inst*p11352c8b40_logs_LoggerProxy) getHolder(ie application.InjectionExt)p55f0853be.LoggerHolder{
+    return ie.GetComponent("#starter-main-logger-holder").(p55f0853be.LoggerHolder)
 }
 
 
@@ -338,7 +395,7 @@ func (inst*p11352c8b40_logs_MainGroup) getFilterNameList(ie application.Injectio
 //
 // id:com-11352c8b402dcccb-logs-MainLogger
 // class:
-// alias:
+// alias:starter-main-logger-holder
 // scope:singleton
 //
 type p11352c8b40_logs_MainLogger struct {
@@ -348,7 +405,7 @@ func (inst* p11352c8b40_logs_MainLogger) register(cr application.ComponentRegist
 	r := cr.NewRegistration()
 	r.ID = "com-11352c8b402dcccb-logs-MainLogger"
 	r.Classes = ""
-	r.Aliases = ""
+	r.Aliases = "starter-main-logger-holder"
 	r.Scope = "singleton"
 	r.NewFunc = inst.new
 	r.InjectFunc = inst.inject

@@ -1,35 +1,35 @@
 package logs
 
 import (
-	"strings"
-	"text/template"
 	"time"
 
 	"github.com/starter-go/application"
+	"github.com/starter-go/starter/common"
 	"github.com/starter-go/vlog"
 )
 
 // MainLogger 用于向文件输出日志
 type MainLogger struct {
-	//starter:component
+	//starter:component(alias="starter-main-logger-holder")
 
 	Filters       []vlog.MessageFilterRegistry //starter:inject(".")
 	Level         string                       //starter:inject("${vlog.level}")
 	MainGroupName string                       //starter:inject("${vlog.main}")
 	Context       application.Context          //starter:inject("context")
 
+	logger      vlog.Logger
 	lc          *LoggerContext //  level vlog.Level
 	startupTime time.Time
 }
 
-func (inst *MainLogger) _impl() (application.Lifecycle, vlog.LoggerFactory) {
-	return inst, inst
+func (inst *MainLogger) _impl() (application.Lifecycle, vlog.LoggerFactory, vlog.LoggerHolder) {
+	return inst, inst, inst
 }
 
 // Life ...
 func (inst *MainLogger) Life() *application.Life {
 	return &application.Life{
-		Order:       -10000,
+		Order:       common.StartupOrderLogger,
 		OnCreate:    inst.onInit,
 		OnStartPost: inst.onStarted,
 	}
@@ -42,14 +42,15 @@ func (inst *MainLogger) onInit() error {
 	}
 	vlog.SetLoggerFactory(inst)
 	inst.flushStartupLogs()
-	inst.printBanner()
+	logger := vlog.GetLogger()
+	inst.logger = logger
 	return nil
 }
 
 func (inst *MainLogger) onStarted() error {
 
 	// like 'Started MyApplication in 0.906 seconds (process running for 6.514)'
-	const f = "Started %s in %s"
+	const f = "Started app(%s) in %s"
 
 	t0 := inst.startupTime
 	t1 := time.Now()
@@ -99,32 +100,13 @@ func (inst *MainLogger) initLoggerContext() error {
 	return nil
 }
 
-func (inst *MainLogger) printBanner() error {
-	const path = "/banner.txt"
-	res, err := inst.Context.GetResources().GetResource(path)
-	if err != nil {
-		return err
+// Logger ...
+func (inst *MainLogger) Logger() vlog.Logger {
+	l := inst.logger
+	if l == nil {
+		l = vlog.GetLogger()
 	}
-	textTemplate, err := res.ReadText()
-	if err != nil {
-		return err
-	}
-
-	data := make(map[string]string)
-	data["StarterVersion"] = "6666"
-
-	templ, err := template.New(path).Parse(textTemplate)
-	if err != nil {
-		return err
-	}
-	builder := &strings.Builder{}
-	builder.WriteString("banner\n")
-	err = templ.Execute(builder, data)
-	if err != nil {
-		return err
-	}
-	inst.lc.LogWithLevel(vlog.INFO, builder.String())
-	return nil
+	return l
 }
 
 // Create ...

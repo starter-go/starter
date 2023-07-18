@@ -4,6 +4,7 @@ import (
 	"sort"
 
 	"github.com/starter-go/application"
+	"github.com/starter-go/starter/common"
 	"github.com/starter-go/vlog"
 )
 
@@ -28,7 +29,7 @@ func (inst *ContextInfoLog) _impl() {
 func (inst *ContextInfoLog) Life() *application.Life {
 	return &application.Life{
 		OnCreate: inst.init,
-		Order:    1,
+		Order:    common.StartupOrderDebug,
 	}
 }
 
