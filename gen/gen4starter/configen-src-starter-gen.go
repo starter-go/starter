@@ -1,6 +1,7 @@
 package gen4starter
 import (
     p0ef6f2938 "github.com/starter-go/application"
+    pa5abee253 "github.com/starter-go/starter/common"
     pb8e5d8aed "github.com/starter-go/starter/common/banner"
     p10812a4aa "github.com/starter-go/starter/common/debug"
     p753b8c772 "github.com/starter-go/starter/common/fs"
@@ -8,6 +9,44 @@ import (
     p55f0853be "github.com/starter-go/vlog"
      "github.com/starter-go/application"
 )
+
+// type pa5abee253.UUIDGenService in package:github.com/starter-go/starter/common
+//
+// id:com-a5abee25387b059a-common-UUIDGenService
+// class:
+// alias:alias-3f0a0f8fe6baff1831e07bb3c7c57e6b-UUIDGenerator
+// scope:singleton
+//
+type pa5abee2538_common_UUIDGenService struct {
+}
+
+func (inst* pa5abee2538_common_UUIDGenService) register(cr application.ComponentRegistry) error {
+	r := cr.NewRegistration()
+	r.ID = "com-a5abee25387b059a-common-UUIDGenService"
+	r.Classes = ""
+	r.Aliases = "alias-3f0a0f8fe6baff1831e07bb3c7c57e6b-UUIDGenerator"
+	r.Scope = "singleton"
+	r.NewFunc = inst.new
+	r.InjectFunc = inst.inject
+	return r.Commit()
+}
+
+func (inst* pa5abee2538_common_UUIDGenService) new() any {
+    return &pa5abee253.UUIDGenService{}
+}
+
+func (inst* pa5abee2538_common_UUIDGenService) inject(injext application.InjectionExt, instance any) error {
+	ie := injext
+	com := instance.(*pa5abee253.UUIDGenService)
+	nop(ie, com)
+
+	
+
+
+    return nil
+}
+
+
 
 // type pb8e5d8aed.Banner in package:github.com/starter-go/starter/common/banner
 //

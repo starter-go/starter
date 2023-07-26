@@ -38,6 +38,7 @@ func (inst*autoRegistrar) addAll() error {
     inst.register(&p11352c8b40_logs_MainGroup{})
     inst.register(&p11352c8b40_logs_MainLogger{})
     inst.register(&p753b8c7726_fs_AFSProxy{})
+    inst.register(&pa5abee2538_common_UUIDGenService{})
     inst.register(&pb8e5d8aedf_banner_Banner{})
 
 

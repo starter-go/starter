@@ -9,6 +9,6 @@ require (
 
 require (
 	github.com/starter-go/afs v0.9.1 // direct
-	github.com/starter-go/base v0.9.5 // direct
+	github.com/starter-go/base v0.9.7 // direct
 	github.com/starter-go/vlog v0.9.5 // direct
 )
