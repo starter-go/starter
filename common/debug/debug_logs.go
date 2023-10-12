@@ -34,6 +34,10 @@ func (inst *ContextInfoLog) Life() *application.Life {
 }
 
 func (inst *ContextInfoLog) init() error {
+
+	lg := inst.Logger
+	lg.Info("to display properties, set {debug.enabled=true} & {debug.log-properties=true}")
+
 	inst.log()
 	return nil
 }
