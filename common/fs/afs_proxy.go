@@ -52,7 +52,7 @@ func (inst *AFSProxy) Separator() string {
 	return inst.FS().Separator()
 }
 
-// SetDefaultOptionsHandler 设置一个函数，用来处理默认的I/O选项
-func (inst *AFSProxy) SetDefaultOptionsHandler(fn afs.OptionsHandlerFunc) error {
-	return inst.FS().SetDefaultOptionsHandler(fn)
-}
+// // SetDefaultOptionsHandler 设置一个函数，用来处理默认的I/O选项
+// func (inst *AFSProxy) SetDefaultOptionsHandler(fn afs.OptionsHandlerFunc) error {
+// 	return inst.FS().SetDefaultOptionsHandler(fn)
+// }
