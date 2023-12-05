@@ -7,6 +7,7 @@ import (
 
 // AFSProxy ...
 type AFSProxy struct {
+
 	//starter:component
 	_as func(afs.FS) //starter:as("#")
 

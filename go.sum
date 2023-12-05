@@ -4,6 +4,8 @@ github.com/starter-go/afs v0.9.2 h1:LwYcz7PWOK92lNBl11kK8J1xGhd1jbhs4d4ahBdg0eU=
 github.com/starter-go/afs v0.9.2/go.mod h1:LbhQ6l5VwFV8YNtG+zSnMf2mLB/KCwK9id6zm9quFSU=
 github.com/starter-go/afs v0.9.3 h1:2pD7DH7Qv7IlbpQnKDFbhYjc0oaOtamRnp6/rVFaIs0=
 github.com/starter-go/afs v0.9.3/go.mod h1:Kuwz+TntvRVUYJuHWfR9hkEIcBiIC3ScW9IS/gjJulM=
+github.com/starter-go/afs v0.9.4 h1:0o96pOdtDvZcWSS5b7icbzYHq6hdfnHZyr+sXD6OZds=
+github.com/starter-go/afs v0.9.4/go.mod h1:Kuwz+TntvRVUYJuHWfR9hkEIcBiIC3ScW9IS/gjJulM=
 github.com/starter-go/application v0.9.4 h1:4sUVEs3zH9HYE+DgVuXpwZr0evV2AF+z2TPC9SSwz5U=
 github.com/starter-go/application v0.9.4/go.mod h1:vMMFrcomf10ygjLt4ASvhXbxxBKHvvNcS3sErlszS+g=
 github.com/starter-go/application v0.9.5 h1:WYZfeFpC6INQjP6Z8/itt4nWLkldH/TrlqdD2JLpl78=
@@ -44,6 +46,8 @@ github.com/starter-go/configen v0.9.2 h1:UdjHSxFJU15lVbckJF6gANsGLfJSgzz93ZAZZjb
 github.com/starter-go/configen v0.9.2/go.mod h1:biLRjMPfuSsAJBoNSNXaMcWle4uIxKvvgu1Xr/8/C/8=
 github.com/starter-go/configen v0.9.3 h1:OJi7A9XncTFhvbKc8ZgSYF+bVDBnnGGhR2u8jS5G5XM=
 github.com/starter-go/configen v0.9.3/go.mod h1:F0Pw1TAmyIiahcuPBqywIM0nxaYGMD9o4FahvcH2AEQ=
+github.com/starter-go/configen v0.9.5 h1:KTwueLMQA3Ba70sJddK+hOLEifOI0dTXpPkX/jiBjIo=
+github.com/starter-go/configen v0.9.5/go.mod h1:n3qiv4z1nZ0h4qfcX9Ju8kUMgjuLUkv0EvL6lxQOwtQ=
 github.com/starter-go/vlog v0.9.0 h1:RuWHk9dLb9JPKflDrROsYhjAkoxAHI7eZ3avHyJXtQw=
 github.com/starter-go/vlog v0.9.0/go.mod h1:WSaU9IGbEaDe/Eoh2W8JOjSn6wdjfGkgBbxJxaqUI/0=
 github.com/starter-go/vlog v0.9.1 h1:944UIr5LW3QzF6st/kO7n/wgfZGnU61Dx/qZKH8F4EE=
