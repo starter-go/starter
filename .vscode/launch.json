@@ -18,7 +18,8 @@
             "mode": "auto",
             "program": "${workspaceFolder}/src/example",
             "args": [
-                "--application.profiles.active=example"
+                "--application.profiles.active=example",
+                "--debug.enabled=1",
             ]
         }
     ]
