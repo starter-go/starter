@@ -19,6 +19,8 @@
             "program": "${workspaceFolder}/src/example",
             "args": [
                 "--application.profiles.active=example",
+                "--application.properties.enabled=1",
+                "--application.properties.file=E:\\home\\dev\\test\\etc\\test.properties",
                 "--debug.enabled=1",
             ]
         }

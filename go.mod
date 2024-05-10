@@ -3,7 +3,7 @@ module github.com/starter-go/starter
 go 1.20
 
 require (
-	github.com/starter-go/application v0.9.23
+	github.com/starter-go/application v0.9.25
 	github.com/starter-go/configen v0.9.5 // direct
 )
 
