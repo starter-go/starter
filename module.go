@@ -9,8 +9,8 @@ import (
 
 const (
 	theModuleName     = "github.com/starter-go/starter"
-	theModuleVersion  = "v1.0.10"
-	theModuleRevision = 12
+	theModuleVersion  = "v1.0.11"
+	theModuleRevision = 13
 	theModuleResPath  = "src/main/resources"
 )
 

@@ -14,8 +14,8 @@ type AFSProxy struct {
 	target afs.FS
 }
 
-func (inst *AFSProxy) _impl() {
-	inst._as(inst)
+func (inst *AFSProxy) _impl() afs.FS {
+	return inst
 }
 
 // FS ...
@@ -31,6 +31,11 @@ func (inst *AFSProxy) FS() afs.FS {
 // NewPath ...
 func (inst *AFSProxy) NewPath(path string) afs.Path {
 	return inst.FS().NewPath(path)
+}
+
+// NewURI ...
+func (inst *AFSProxy) NewURI(u afs.URI) (afs.Path, error) {
+	return inst.FS().NewURI(u)
 }
 
 // ListRoots ...
