@@ -9,8 +9,8 @@ import (
 
 const (
 	theModuleName     = "github.com/starter-go/starter"
-	theModuleVersion  = "v1.0.12"
-	theModuleRevision = 14
+	theModuleVersion  = "v1.0.13"
+	theModuleRevision = 15
 	theModuleResPath  = "src/main/resources"
 )
 
@@ -25,6 +25,5 @@ func Module() application.Module {
 	mb.Revision(theModuleRevision)
 	mb.EmbedResources(theModuleResFS, theModuleResPath)
 	mb.Components(gen4starter.ExportComponents)
-	// mb.Depend(nil)
 	return mb.Create()
 }
