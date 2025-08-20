@@ -4,7 +4,7 @@ import (
 	"embed"
 
 	"github.com/starter-go/application"
-	"github.com/starter-go/starter/gen/gen4starter"
+	"github.com/starter-go/starter/gen/main4starter"
 )
 
 const (
@@ -24,6 +24,6 @@ func Module() application.Module {
 	mb.Version(theModuleVersion)
 	mb.Revision(theModuleRevision)
 	mb.EmbedResources(theModuleResFS, theModuleResPath)
-	mb.Components(gen4starter.ExportComponents)
+	mb.Components(main4starter.ExportComponents)
 	return mb.Create()
 }

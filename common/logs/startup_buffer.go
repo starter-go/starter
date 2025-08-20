@@ -37,6 +37,10 @@ func (inst *myStartupBuffer) push(msg *vlog.Message) {
 	inst.logs = append(inst.logs, msg)
 }
 
+func (inst *myStartupBuffer) HandleMessage(msg *vlog.Message) {
+	inst.push(msg)
+}
+
 func (inst *myStartupBuffer) getLoggerFactory() vlog.LoggerFactory {
 	return &myStartupBufferLoggerFactory{buffer: inst}
 }
@@ -63,84 +67,109 @@ func (inst *myStartupBufferLoggerFactory) _impl() vlog.LoggerFactory {
 }
 
 func (inst *myStartupBufferLoggerFactory) Create() vlog.Logger {
-	return &myStartupBufferLogger{buffer: inst.buffer}
+
+	logger := &myStartupBufferLogger{buffer: inst.buffer}
+	logger.init()
+
+	logger.SetTag("starter-boot")
+	logger.SetSender(inst)
+	logger.SetLevelAccepted(vlog.INFO)
+	logger.SetTargetHandler(inst.buffer)
+
+	return logger
 }
 
 ////////////////////////////////////////////////////////////////////////////////
 
 type myStartupBufferLogger struct {
+	vlog.LoggerAdapter
+
 	buffer *myStartupBuffer
 }
 
-func (inst *myStartupBufferLogger) _impl() vlog.Logger {
-	return inst
+// func (inst *myStartupBufferLogger) _impl() vlog.Logger {
+// 	return inst
+// }
+
+func (inst *myStartupBufferLogger) init() vlog.Logger {
+	return initLoggerAdapter(&inst.LoggerAdapter)
 }
 
-func (inst *myStartupBufferLogger) log(level vlog.Level, fmt string, args ...any) {
-	msg := &vlog.Message{}
-	msg.Timestamp = time.Now()
-	msg.Level = level
-	msg.Format = fmt
-	msg.Arguments = args
-	msg.Sender = inst.buffer
-	msg.Tag = "starter-startup"
+func (inst *myStartupBufferLogger) HandleMessage(msg *vlog.Message) {
+
 	inst.buffer.push(msg)
+
 }
 
-func (inst *myStartupBufferLogger) Trace(fmt string, args ...any) {
-	inst.log(vlog.TRACE, fmt, args...)
-}
+// func (inst *myStartupBufferLogger) push(msg *vlog.Message) {
 
-func (inst *myStartupBufferLogger) Debug(fmt string, args ...any) {
-	inst.log(vlog.DEBUG, fmt, args...)
-}
+// 	// msg := &vlog.Message{}
+// 	// msg.Timestamp = time.Now()
+// 	// msg.Level = level
+// 	// msg.Format = fmt
+// 	// msg.Arguments = args
+// 	// msg.Sender = inst.buffer
+// 	// msg.Tag = "starter-startup"
 
-func (inst *myStartupBufferLogger) Info(fmt string, args ...any) {
-	inst.log(vlog.INFO, fmt, args...)
-}
+// }
 
-func (inst *myStartupBufferLogger) Warn(fmt string, args ...any) {
-	inst.log(vlog.WARN, fmt, args...)
-}
+// func (inst *myStartupBufferLogger) log(level vlog.Level, fmt string, args ...any) {
+// }
 
-func (inst *myStartupBufferLogger) Error(fmt string, args ...any) {
-	inst.log(vlog.ERROR, fmt, args...)
-}
+// func (inst *myStartupBufferLogger) Trace(fmt string, args ...any) {
+// 	inst.log(vlog.TRACE, fmt, args...)
+// }
 
-func (inst *myStartupBufferLogger) Fatal(fmt string, args ...any) {
-	inst.log(vlog.FATAL, fmt, args...)
-}
+// func (inst *myStartupBufferLogger) Debug(fmt string, args ...any) {
+// 	inst.log(vlog.DEBUG, fmt, args...)
+// }
 
-func (inst *myStartupBufferLogger) IsTraceEnabled() bool {
-	return true
-}
+// func (inst *myStartupBufferLogger) Info(fmt string, args ...any) {
+// 	inst.log(vlog.INFO, fmt, args...)
+// }
 
-func (inst *myStartupBufferLogger) IsDebugEnabled() bool {
-	return true
-}
+// func (inst *myStartupBufferLogger) Warn(fmt string, args ...any) {
+// 	inst.log(vlog.WARN, fmt, args...)
+// }
 
-func (inst *myStartupBufferLogger) IsInfoEnabled() bool {
-	return true
-}
+// func (inst *myStartupBufferLogger) Error(fmt string, args ...any) {
+// 	inst.log(vlog.ERROR, fmt, args...)
+// }
 
-func (inst *myStartupBufferLogger) IsWarnEnabled() bool {
-	return true
-}
+// func (inst *myStartupBufferLogger) Fatal(fmt string, args ...any) {
+// 	inst.log(vlog.FATAL, fmt, args...)
+// }
 
-func (inst *myStartupBufferLogger) IsErrorEnabled() bool {
-	return true
-}
+// func (inst *myStartupBufferLogger) IsTraceEnabled() bool {
+// 	return true
+// }
 
-func (inst *myStartupBufferLogger) IsFatalEnabled() bool {
-	return true
-}
+// func (inst *myStartupBufferLogger) IsDebugEnabled() bool {
+// 	return true
+// }
 
-func (inst *myStartupBufferLogger) ForSender(sender any) vlog.Logger {
-	return inst // 不支持 sender
-}
+// func (inst *myStartupBufferLogger) IsInfoEnabled() bool {
+// 	return true
+// }
 
-func (inst *myStartupBufferLogger) ForTag(tag string) vlog.Logger {
-	return inst // 不支持 tag
-}
+// func (inst *myStartupBufferLogger) IsWarnEnabled() bool {
+// 	return true
+// }
+
+// func (inst *myStartupBufferLogger) IsErrorEnabled() bool {
+// 	return true
+// }
+
+// func (inst *myStartupBufferLogger) IsFatalEnabled() bool {
+// 	return true
+// }
+
+// func (inst *myStartupBufferLogger) ForSender(sender any) vlog.Logger {
+// 	return inst // 不支持 sender
+// }
+
+// func (inst *myStartupBufferLogger) ForTag(tag string) vlog.Logger {
+// 	return inst // 不支持 tag
+// }
 
 ////////////////////////////////////////////////////////////////////////////////

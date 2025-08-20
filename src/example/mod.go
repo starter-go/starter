@@ -5,7 +5,7 @@ import (
 
 	"github.com/starter-go/application"
 	"github.com/starter-go/starter"
-	"github.com/starter-go/starter/gen/gen4example"
+	"github.com/starter-go/starter/gen/example4starter"
 )
 
 //go:embed "res"
@@ -16,6 +16,6 @@ func theModule() application.Module {
 	mb.Name("starter/example").Version("v1").Revision(1)
 	mb.EmbedResources(theModuleResFS, "res")
 	mb.Depend(starter.Module())
-	mb.Components(gen4example.ExportComponents)
+	mb.Components(example4starter.ExportComponents)
 	return mb.Create()
 }

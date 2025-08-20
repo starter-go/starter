@@ -1,4 +1,4 @@
-package gen4starter
+package main4starter
 import (
     p0ef6f2938 "github.com/starter-go/application"
     pa5abee253 "github.com/starter-go/starter/common"
@@ -361,15 +361,9 @@ func (inst* p11352c8b40_logs_LoggerProxy) inject(injext application.InjectionExt
 	nop(ie, com)
 
 	
-    com.Holder = inst.getHolder(ie)
 
 
     return nil
-}
-
-
-func (inst*p11352c8b40_logs_LoggerProxy) getHolder(ie application.InjectionExt)p55f0853be.LoggerHolder{
-    return ie.GetComponent("#starter-main-logger-holder").(p55f0853be.LoggerHolder)
 }
 
 

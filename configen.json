@@ -3,8 +3,13 @@
         "version": "4",
         "sources": [
             {
-                "id": "starter",
+                "id": "main",
                 "path": "common",
+                "r": true
+            },
+            {
+                "id": "test",
+                "path": "src/test/units",
                 "r": true
             },
             {
@@ -15,15 +20,22 @@
         ],
         "destinations": [
             {
-                "id": "starter",
-                "path": "gen/gen4starter",
+                "id": "main",
+                "path": "gen/main4starter",
                 "sources": [
-                    "starter"
+                    "main"
+                ]
+            },
+            {
+                "id": "test",
+                "path": "gen/test4starter",
+                "sources": [
+                    "test"
                 ]
             },
             {
                 "id": "example",
-                "path": "gen/gen4example",
+                "path": "gen/example4starter",
                 "sources": [
                     "example"
                 ]

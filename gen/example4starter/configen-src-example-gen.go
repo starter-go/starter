@@ -1,4 +1,4 @@
-package gen4example
+package example4starter
 import (
     p0ef6f2938 "github.com/starter-go/application"
     p744545790 "github.com/starter-go/starter/src/example/parts"

@@ -1,6 +1,6 @@
 //starter:configen(version="4")
 
-package gen4example
+package example4starter
 
 import "github.com/starter-go/application"
 
