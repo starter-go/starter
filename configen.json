@@ -13,8 +13,8 @@
                 "r": true
             },
             {
-                "id": "example",
-                "path": "src/example/parts",
+                "id": "demo",
+                "path": "src/demo/parts",
                 "r": true
             }
         ],
@@ -34,10 +34,10 @@
                 ]
             },
             {
-                "id": "example",
-                "path": "gen/example4starter",
+                "id": "demo",
+                "path": "gen/demo4starter",
                 "sources": [
-                    "example"
+                    "demo"
                 ]
             }
         ]

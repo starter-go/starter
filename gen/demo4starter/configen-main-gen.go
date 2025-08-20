@@ -1,4 +1,4 @@
-package example4starter
+package demo4starter
 
 import "github.com/starter-go/application"
 
@@ -30,7 +30,7 @@ func (inst *autoRegistrar) register(factory comFactory) error {
 func (inst*autoRegistrar) addAll() error {
 
     
-    inst.register(&p7445457906_parts_ExampleApp{})
+    inst.register(&p9c772fefab_parts_Demo1{})
 
 
     return nil
