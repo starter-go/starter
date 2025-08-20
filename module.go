@@ -11,8 +11,8 @@ import (
 
 const (
 	theModuleName     = "github.com/starter-go/starter"
-	theModuleVersion  = "v1.0.13"
-	theModuleRevision = 15
+	theModuleVersion  = "v1.0.14"
+	theModuleRevision = 16
 )
 
 ////////////////////////////////////////////////////////////////////////////////
